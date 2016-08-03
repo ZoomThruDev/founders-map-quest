@@ -1,0 +1,17 @@
+{
+  "name": "founders_map_quest",
+  "homepage": "https://github.com/davidmrnustik/founders-map-quest",
+  "authors": [
+    "David Mrnustik <david.mrnustik@hotmail.com>"
+  ],
+  "description": "Challenge App",
+  "main": "index.html",
+  "license": "OTHER",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
