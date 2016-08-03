@@ -44,6 +44,9 @@ app.controller('MainController', ['$scope', function($scope){
         lng: parseFloat(lng)
       });
     }
+    if (!isNaN($scope.startups[0].lat)) {
+      $scope.mapMarkers = dataToMarkers($scope.startups);
+    };
     
   });
 
