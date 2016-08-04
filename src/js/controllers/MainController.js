@@ -86,6 +86,7 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', 'leafletB
     }
     if ($scope.startups.length) {
       toggleVisibility('#coords', 'show');
+      toggleVisibility('#formSearch', 'show');
 
       if (!isNaN($scope.startups[0].lat) && !isNaN($scope.startups[0].lng)) {
         $scope.showMap = true;
