@@ -28,8 +28,8 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', 'leafletB
     startupsHidden: [],
     dataLat: "Garage Latitude",
     dataLng: "Garage Longitude",
-    sortType: '',
-    sortReverse: false,
+    sortType: 'Name',
+    sortReverse: true,
     searchStartup: ''
   });
 
@@ -53,6 +53,11 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', 'leafletB
     if ($scope.csvData.length) {
       toggleVisibility('#delimiter', 'show');
       toggleVisibility('#tableMarkers', 'show');
+    };
+
+    $scope.sortBy = function(sortType) {
+      $scope.sortReverse = ($scope.sortType === sortType) ? !$scope.sortReverse : false;
+      $scope.sortType = sortType;
     };
 
     // we parse first row like head

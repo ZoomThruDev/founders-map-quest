@@ -24,11 +24,11 @@
   <thead>
     <tr>
       <th>VIS</th>
-      <th ng-repeat="head in heading">{{ head }}</th>
+      <th ng-repeat="head in heading" ng-click="sortBy(head)" style="cursor:pointer;text-decoration:underline;">{{ head }}</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="startup in startups | orderBy:'name'">
+    <tr ng-repeat="startup in startups | orderBy:sortType:sortReverse">
       <td>
         <span ng-click="toggleMarker(startup, 'hide')">HIDE</span>
       </td>
