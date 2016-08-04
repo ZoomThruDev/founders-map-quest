@@ -1,14 +1,13 @@
-<p>
-  <input id="delimiterComma" type="radio" name="delimiter" ng-model="delimiter" name="choice" value=",">
-  <label for="delimiterComma">Delimiter ","</label>
-</p>
-<p>
-  <input id="delimiterSemicolon" type="radio" name="delimiter" ng-model="delimiter" name="choice" value=";">
-  <label for="delimiterSemicolon">Delimiter ","</label>
-</p>
-<p>
-  Your delimiter is {{ delimiter }}
-</p>
+<fieldset id="delimiter" hidden>
+  <p>
+    <input id="delimiterComma" type="radio" name="delimiter" ng-model="delimiter" value=",">
+    <label for="delimiterComma">Delimiter ","</label>
+  </p>
+  <p>
+    <input id="delimiterSemicolon" type="radio" name="delimiter" ng-model="delimiter" value=";">
+    <label for="delimiterSemicolon">Delimiter ";"</label>
+  </p>
+</fieldset>
 <p>
   <textarea name="csvData" ng-model="csvData" placeholder="Place your code" cols="40" rows="10"></textarea>
 </p>
@@ -27,5 +26,5 @@
 </table>
 
 <div id="map">
-  <leaflet markers="mapMarkers" center="mapCenter" defaults="defaults" width="400px" height="400px"></leaflet>
+  <leaflet center="mapCenter" ng-show="showMap" defaults="defaults" markers="mapMarkers" bounds="bounds" width="100%" height="480px"></leaflet>
 </div>

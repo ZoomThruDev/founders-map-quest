@@ -1,4 +1,4 @@
-app.controller('MainController', ['$scope', function($scope){
+app.controller('MainController', ['$scope', '$timeout', 'leafletData', function($scope, $timeout, leafletData){
 
   angular.extend($scope, {
     mapCenter: {
@@ -18,9 +18,23 @@ app.controller('MainController', ['$scope', function($scope){
     }
   });
 
+  // default variables
   $scope.csvData = "";
   $scope.delimiter = ",";
   $scope.startups = [];
+  $scope.dataLat = "Garage Latitude";
+  $scope.dataLng = "Garage Longitude";
+
+  $scope.showMap = false;
+  $scope.$watch("showMap", function(value) {
+    if (value === true) {
+      leafletData.getMap().then(function(map) {
+        $timeout(function() {
+          map.invalidateSize();
+        }, 300);
+      });
+    }
+  });
 
   $scope.$watchGroup(["delimiter", "csvData"], function() {
   
@@ -45,6 +59,7 @@ app.controller('MainController', ['$scope', function($scope){
       });
     }
     if (!isNaN($scope.startups[0].lat)) {
+      $scope.showMap = true;
       $scope.mapMarkers = dataToMarkers($scope.startups);
     };
     
