@@ -10,3 +10,12 @@ var dataToMarkers = function(data) {
 
   return markers;
 };
+
+var toggleVisibility = function(tag, action) {
+  var e = document.querySelector(tag);
+  if (action == 'show') {
+    e.removeAttribute('hidden');
+  } else {
+    e.setAttribute('hidden', 'hidden');
+  }
+}

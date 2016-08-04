@@ -8,21 +8,31 @@
     <label for="delimiterSemicolon">Delimiter ";"</label>
   </p>
 </fieldset>
+<fieldset id="coords" hidden>
+  <select ng-model="dataLat">
+    <option ng-selected="{{ head == dataLat }}" ng-repeat="head in heading">{{ head }}</option>
+  </select>
+  <select ng-model="dataLng">
+    <option ng-selected="{{ head == dataLng }}" ng-repeat="head in heading">{{ head }}</option>
+  </select>
+</fieldset>
 <p>
   <textarea name="csvData" ng-model="csvData" placeholder="Place your code" cols="40" rows="10"></textarea>
 </p>
 
 <table border="1">
-  <tr>
-    <th>Name</th>
-    <th>Lat</th>
-    <th>Lon</th>
-  </tr>
-  <tr ng-repeat="startup in startups">
-    <td>{{startup.name}}</td>
-    <td ng-model="mapCenter.lat">{{startup.lat}}</td>
-    <td ng-model="mapCenter.lng">{{startup.lng}}</td>
-  </tr>
+  <thead>
+    <tr>
+      <th ng-repeat="head in heading">{{ head }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="startup in startups">
+      <td>{{startup.name}}</td>
+      <td ng-model="mapCenter.lat">{{startup.lat}}</td>
+      <td ng-model="mapCenter.lng">{{startup.lng}}</td>
+    </tr>
+  </tbody>
 </table>
 
 <div id="map">

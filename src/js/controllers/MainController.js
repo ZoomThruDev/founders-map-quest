@@ -36,21 +36,34 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
     }
   });
 
-  $scope.$watchGroup(["delimiter", "csvData"], function() {
+  $scope.$watchGroup(["delimiter", "csvData", "dataLat", "dataLng"], function() {
   
-    var lines, data, length, place;
+    var lines, data, length, place, indexLat, indexLng;
     $scope.startups = [];
     $scope.places = [];
     lines = $scope.csvData.split('\n');
+
+    if ($scope.csvData.length) {
+      toggleVisibility('#delimiter', 'show');
+    };
+
+    // we parse first row like head
+    $scope.heading = lines[0].split($scope.delimiter);
+
+    if($scope.heading.length > 1) {
+      indexLat = $scope.heading.indexOf($scope.dataLat);
+      indexLng = $scope.heading.indexOf($scope.dataLng);
+    }
     
-    for (var i = lines.length - 1; i >= 0; i--) {
+    // begin from index 1 to avoid header
+    for (var i = 1, l = lines.length; i < l; i++) {
       places = [];
       line = lines[i];
       data = line.split($scope.delimiter);
 
       var name = data[0];
-      var lat = data[1];
-      var lng = data[2];
+      var lat = data[indexLat];
+      var lng = data[indexLng];
 
       $scope.startups.push({
         name: name,
@@ -58,10 +71,14 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
         lng: parseFloat(lng)
       });
     }
-    if (!isNaN($scope.startups[0].lat)) {
-      $scope.showMap = true;
-      $scope.mapMarkers = dataToMarkers($scope.startups);
-    };
+    if ($scope.startups.length) {
+      toggleVisibility('#coords', 'show');
+
+      if (!isNaN($scope.startups[0].lat) && !isNaN($scope.startups[0].lng)) {
+        $scope.showMap = true;
+        $scope.mapMarkers = dataToMarkers($scope.startups);
+      };
+    }
     
   });
 
