@@ -20,17 +20,34 @@
   <textarea name="csvData" ng-model="csvData" placeholder="Place your code" cols="40" rows="10"></textarea>
 </p>
 
-<table border="1">
+<table id="tableMarkers" border="1" hidden>
   <thead>
     <tr>
+      <th>VIS</th>
       <th ng-repeat="head in heading">{{ head }}</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="startup in startups">
+    <tr ng-repeat="startup in startups | orderBy:'name'">
+      <td>
+        <span ng-click="toggleMarker(startup, 'hide')">HIDE</span>
+      </td>
       <td>{{startup.name}}</td>
       <td ng-model="mapCenter.lat">{{startup.lat}}</td>
       <td ng-model="mapCenter.lng">{{startup.lng}}</td>
+    </tr>
+    <tr>
+      <td colspan="5">
+        Disabled
+      </td>
+    </tr>
+    <tr ng-repeat="hidden in startupsHidden">
+      <td>
+        <span ng-click="toggleMarker(hidden, 'show')">SHOW</span>
+      </td>
+      <td>{{hidden.name}}</td>
+      <td ng-model="mapCenter.lat">{{hidden.lat}}</td>
+      <td ng-model="mapCenter.lng">{{hidden.lng}}</td>
     </tr>
   </tbody>
 </table>

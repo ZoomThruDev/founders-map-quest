@@ -1,4 +1,9 @@
-app.controller('MainController', ['$scope', '$timeout', 'leafletData', function($scope, $timeout, leafletData){
+app.controller('MainController', ['$scope', '$timeout', 'leafletData', 'leafletBoundsHelpers', function($scope, $timeout, leafletData, leafletBoundsHelpers){
+
+  $scope.bounds = leafletBoundsHelpers.createBoundsFromArray([
+    [ 51.508742458803326, -0.087890625 ],
+    [ 50.508742458803326, -0.097890625 ]
+  ]);
 
   angular.extend($scope, {
     mapCenter: {
@@ -15,17 +20,19 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
         reuseTiles: true,
       },
       scrollWheelZoom: false
-    }
+    },
+    showMap: false,
+    csvData: "",
+    delimiter: ",",
+    startups: [],
+    startupsHidden: [],
+    dataLat: "Garage Latitude",
+    dataLng: "Garage Longitude",
+    sortType: '',
+    sortReverse: false,
+    searchStartup: ''
   });
 
-  // default variables
-  $scope.csvData = "";
-  $scope.delimiter = ",";
-  $scope.startups = [];
-  $scope.dataLat = "Garage Latitude";
-  $scope.dataLng = "Garage Longitude";
-
-  $scope.showMap = false;
   $scope.$watch("showMap", function(value) {
     if (value === true) {
       leafletData.getMap().then(function(map) {
@@ -45,6 +52,7 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
 
     if ($scope.csvData.length) {
       toggleVisibility('#delimiter', 'show');
+      toggleVisibility('#tableMarkers', 'show');
     };
 
     // we parse first row like head
@@ -77,6 +85,12 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
       if (!isNaN($scope.startups[0].lat) && !isNaN($scope.startups[0].lng)) {
         $scope.showMap = true;
         $scope.mapMarkers = dataToMarkers($scope.startups);
+        $scope.bounds = leafletBoundsHelpers.createBoundsFromArray(dataToBounds($scope.startups, 2));
+
+        $scope.toggleMarker = function(index, action) {
+          $scope.mapMarkers = updateMarkers($scope.startups, $scope.startupsHidden, index, action);
+        }
+        console.log(dataToBounds($scope.startups, 2));
       };
     }
     
