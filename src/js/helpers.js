@@ -47,13 +47,3 @@ var updateMap = function(data) {
     );
   }); 
 };
-
-var layersToMap = function(data, layers) {
-	for(var i = 0, l = data.length; i < l; i++) {
-		layers[data[i].id] = {
-			type: 'group',
-			name: data[i].name,
-			visible: true
-		};
-	};
-};

@@ -26,7 +26,7 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
       },
       overlays: {}
     },
-    headingKeys: ['id', 'name', 'lat', 'lng'],
+    headingKeys: ['id', 'company', 'founder', 'city', 'country', 'zip', 'street', 'photo', 'homepage', 'lat', 'lng'],
     heading: {},
     markers: {},
     bounds: {},
@@ -79,16 +79,18 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
       line = lines[i];
       data = line.split($scope.delimiter);
 
-      var id = data[0];
-      var name = data[1];
-      var lat = data[indexLat];
-      var lng = data[indexLng];
-
       $scope.startups.push({
-        id: id,
-        name: name,
-        lat: parseFloat(lat),
-        lng: parseFloat(lng)
+        id: data[0],
+        company: data[1],
+        founder: data[2],
+        city: data[3],
+        country: data[4],
+        zip: data[5],
+        street: data[6],
+        photo: data[7],
+        homepage: data[8],
+        lat: parseFloat(data[indexLat]),
+        lng: parseFloat(data[indexLng])
       });
     }
     if ($scope.startups.length) {
@@ -107,10 +109,11 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
 
         $scope.$watch(["markers"], function() {
           updateMap(leafletData);
+          
           for(var i = 0, l = $scope.startups.length; i < l; i++) {
             $scope.layers.overlays[$scope.startups[i].id] = {
               type: 'group',
-              name: $scope.startups[i].name,
+              name: $scope.startups[i].company,
               visible: true
             }
           };

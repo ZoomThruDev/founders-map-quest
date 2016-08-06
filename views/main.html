@@ -35,7 +35,16 @@
   <tbody>
     <tr ng-repeat="startup in startups | orderBy:sortType:sortReverse | filter: searchStartup">
       <td>{{startup.id}}</td>
-      <td>{{startup.name}}</td>
+      <td>{{startup.company}}</td>
+      <td>{{startup.founder}}</td>
+      <td>{{startup.city}}</td>
+      <td>{{startup.country}}</td>
+      <td>{{startup.zip}}</td>
+      <td>{{startup.street}}</td>
+      <td>
+        <img ng-src="{{startup.photo}}" width="50px" height="50px">
+      </td>
+      <td><a href="{{startup.homepage}}">URL</a></td>
       <td>{{startup.lat}}</td>
       <td>{{startup.lng}}</td>
     </tr>
