@@ -2,25 +2,14 @@ var dataToMarkers = function(data) {
   var markers = {};
   for(var i = 0, l = data.length; i < l; i++) {
     place = {
+    	layer: data[i].id,
       lat: data[i].lat,
       lng: data[i].lng
     };
     markers[data[i].id] = place;
-  }
-
+  };
   return markers;
 };
-
-var updateMarkers = function (data, data2, index, action) {
-  if (action == 'hide') {
-    data2.push(index);
-    data.splice(data.indexOf(index), 1);
-  } else {
-    data.push(index);
-    data2.splice(data2.indexOf(index), 1);
-  }
-  return data;
-}
 
 var toggleVisibility = function(tag, action) {
   var e = document.querySelector(tag);
@@ -28,8 +17,8 @@ var toggleVisibility = function(tag, action) {
     e.removeAttribute('hidden');
   } else {
     e.setAttribute('hidden', 'hidden');
-  }
-}
+  };
+};
 
 var updateMap = function(data) {
   var _leafletMap = null;
@@ -49,12 +38,22 @@ var updateMap = function(data) {
               }
             } else {
               getBoundsRecursive(obj[key]);
-            }
-          }
+            };
+          };
         };
         getBoundsRecursive(markers);
         _leafletMap.fitBounds(bounds, {padding: [ 50, 50 ]});
       }
-    )
+    );
   }); 
-}
+};
+
+var layersToMap = function(data, layers) {
+	for(var i = 0, l = data.length; i < l; i++) {
+		layers[data[i].id] = {
+			type: 'group',
+			name: data[i].name,
+			visible: true
+		};
+	};
+};

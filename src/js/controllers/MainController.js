@@ -16,6 +16,16 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
       },
       scrollWheelZoom: false
     },
+    layers: {
+      baselayers: {
+        openStreetMap: {
+          name: 'OpenStreetMap',
+          type: 'xyz',
+          url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        }
+      },
+      overlays: {}
+    },
     markers: {},
     bounds: {},
     showMap: false,
@@ -88,19 +98,21 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
 
       if (!isNaN($scope.startups[0].lat) && !isNaN($scope.startups[0].lng)) {
         $scope.showMap = true;
-
-        $scope.toggleMarker = function(index, action) {
-          $scope.markers = updateMarkers($scope.startups, $scope.startupsHidden, index, action);
-        }
-
         $scope.markers = dataToMarkers($scope.startups);
 
         $scope.$watch(["markers"], function() {
           updateMap(leafletData);
+          for(var i = 0, l = $scope.startups.length; i < l; i++) {
+            $scope.layers.overlays[$scope.startups[i].id] = {
+              type: 'group',
+              name: $scope.startups[i].name,
+              visible: true
+            }
+          };
         });
 
       };
-    }
+    };
     
   });
 

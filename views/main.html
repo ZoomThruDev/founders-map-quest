@@ -29,37 +29,19 @@
 <table id="tableMarkers" border="1" hidden>
   <thead>
     <tr>
-      <th>VIS</th>
       <th ng-repeat="head in heading" ng-click="sortBy(head)" style="cursor:pointer;text-decoration:underline;">{{ head }}</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="startup in startups | orderBy:sortType:sortReverse | filter: searchStartup">
-      <td>
-        <span ng-click="toggleMarker(startup, 'hide')">HIDE</span>
-      </td>
       <td>{{startup.id}}</td>
       <td>{{startup.name}}</td>
-      <td ng-model="mapCenter.lat">{{startup.lat}}</td>
-      <td ng-model="mapCenter.lng">{{startup.lng}}</td>
-    </tr>
-    <tr>
-      <td colspan="6">
-        Disabled
-      </td>
-    </tr>
-    <tr ng-repeat="hidden in startupsHidden">
-      <td>
-        <span ng-click="toggleMarker(hidden, 'show')">SHOW</span>
-      </td>
-      <td>{{hidden.id}}</td>
-      <td>{{hidden.name}}</td>
-      <td ng-model="mapCenter.lat">{{hidden.lat}}</td>
-      <td ng-model="mapCenter.lng">{{hidden.lng}}</td>
+      <td>{{startup.lat}}</td>
+      <td>{{startup.lng}}</td>
     </tr>
   </tbody>
 </table>
 
 <div id="map">
-  <leaflet center="mapCenter" ng-show="showMap" defaults="defaults" markers="markers" bounds="bounds" width="100%" height="480px"></leaflet>
+  <leaflet center="mapCenter" ng-show="showMap" defaults="defaults" markers="markers" bounds="bounds" layers="layers" width="100%" height="480px"></leaflet>
 </div>
