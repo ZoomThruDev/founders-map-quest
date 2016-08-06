@@ -13,11 +13,11 @@
   </p>
 </fieldset>
 <fieldset id="coords" hidden>
-  <select ng-model="dataLat">
-    <option ng-selected="{{ head == dataLat }}" ng-repeat="head in heading">{{ head }}</option>
+  <select name="head" ng-model="dataLat" ng-selected="dataLat" ng-options="head for head in heading">
+    <option value="">Choose column for Latitude</option>
   </select>
-  <select ng-model="dataLng">
-    <option ng-selected="{{ head == dataLng }}" ng-repeat="head in heading">{{ head }}</option>
+  <select name="head" ng-model="dataLng" ng-selected="dataLng" ng-options="head for head in heading">
+    <option value="">Choose column for Longitude</option>
   </select>
 </fieldset>
 <p>
