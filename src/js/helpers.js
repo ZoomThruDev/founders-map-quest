@@ -47,3 +47,7 @@ var updateMap = function(data) {
     );
   }); 
 };
+
+var isTabDelimited = function(data, delimiter) {
+  return (delimiter == 't') ? data.split(/\t+/) : data.split(delimiter);
+};

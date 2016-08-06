@@ -63,7 +63,7 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
     };
 
     // we parse first row like head
-    $scope.firstRow = lines[0].split($scope.delimiter);
+    $scope.firstRow = isTabDelimited(lines[0], $scope.delimiter);
 
     for(var i = 0, l = $scope.headingKeys.length; i < l; i++) {
       $scope.heading[$scope.headingKeys[i]] = $scope.firstRow[i];
@@ -77,7 +77,7 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
     // begin from index 1 to avoid header
     for (var i = 1, l = lines.length; i < l; i++) {
       line = lines[i];
-      data = line.split($scope.delimiter);
+      data = isTabDelimited(line, $scope.delimiter);
 
       $scope.startups.push({
         id: data[0],
