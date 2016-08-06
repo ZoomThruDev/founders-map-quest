@@ -1,0 +1,64 @@
+<p><a href="/#/">Homepage</a></p>
+
+<h1>Map</h1>
+
+<fieldset id="delimiter" hidden>
+  <p>
+    <input id="delimiterComma" type="radio" name="delimiter" ng-model="delimiter" value=",">
+    <label for="delimiterComma">Delimiter ","</label>
+  </p>
+  <p>
+    <input id="delimiterSemicolon" type="radio" name="delimiter" ng-model="delimiter" value=";">
+    <label for="delimiterSemicolon">Delimiter ";"</label>
+  </p>
+  <p>
+    <input id="delimiterSemicolon" type="radio" name="delimiter" ng-model="delimiter" value="t">
+    <label for="delimiterSemicolon">Delimiter "TAB"</label>
+  </p>
+</fieldset>
+<fieldset id="coords" hidden>
+  <select name="head" ng-model="dataLat" ng-selected="dataLat" ng-options="head for head in heading">
+    <option value="">Choose column for Latitude</option>
+  </select>
+  <select name="head" ng-model="dataLng" ng-selected="dataLng" ng-options="head for head in heading">
+    <option value="">Choose column for Longitude</option>
+  </select>
+</fieldset>
+<p>
+  <textarea name="csvData" ng-model="csvData" placeholder="Place your code" cols="40" rows="10"></textarea>
+</p>
+
+<form id="formSearch" hidden>
+  <fieldset>
+    <input type="text" placeholder="Search startup" ng-model="searchStartup">
+  </fieldset>
+</form>
+
+<table id="tableMarkers" border="1" hidden>
+  <thead>
+    <tr>
+      <th ng-repeat="(key, value) in heading" ng-click="sortBy(key)" style="cursor:pointer;text-decoration:underline;">{{ value }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="startup in startups | orderBy:sortType:sortReverse | filter: searchStartup">
+      <td>{{startup.id}}</td>
+      <td>{{startup.company}}</td>
+      <td>{{startup.founder}}</td>
+      <td>{{startup.city}}</td>
+      <td>{{startup.country}}</td>
+      <td>{{startup.zip}}</td>
+      <td>{{startup.street}}</td>
+      <td>
+        <img ng-src="{{startup.photo}}" width="50px" height="50px">
+      </td>
+      <td><a href="{{startup.homepage}}">URL</a></td>
+      <td>{{startup.lat}}</td>
+      <td>{{startup.lng}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="map">
+  <leaflet center="mapCenter" ng-show="showMap" defaults="defaults" markers="markers" bounds="bounds" layers="layers" width="100%" height="480px"></leaflet>
+</div>

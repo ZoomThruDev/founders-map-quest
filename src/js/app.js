@@ -6,8 +6,12 @@ app.config(function($routeProvider){
 		controller: 'MainController',
 		templateUrl: 'views/main.html'
 	})
+	.when('/map', {
+		controller: 'MapController',
+		templateUrl: 'views/map.html'
+	})
 	.otherwise({
-		redirectTo: '/'
+		templateUrl: 'views/main.html'
 	});
 });
 
