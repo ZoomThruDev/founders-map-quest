@@ -26,16 +26,17 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
       },
       overlays: {}
     },
+    headingKeys: ['id', 'name', 'lat', 'lng'],
+    heading: {},
     markers: {},
     bounds: {},
     showMap: false,
     csvData: "",
     delimiter: ",",
     startups: [],
-    startupsHidden: [],
     dataLat: "Garage Latitude",
     dataLng: "Garage Longitude",
-    sortType: 'Name',
+    sortType: '-id',
     sortReverse: true,
     searchStartup: ''
   });
@@ -54,7 +55,6 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
   
     var lines, data, length, indexLat, indexLng;
     $scope.startups = [];
-    $scope.places = [];
     lines = $scope.csvData.split('\n');
 
     if ($scope.csvData.length) {
@@ -62,17 +62,16 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
       toggleVisibility('#tableMarkers', 'show');
     };
 
-    $scope.sortBy = function(sortType) {
-      $scope.sortReverse = ($scope.sortType === sortType) ? !$scope.sortReverse : false;
-      $scope.sortType = sortType;
-    };
-
     // we parse first row like head
-    $scope.heading = lines[0].split($scope.delimiter);
+    $scope.firstRow = lines[0].split($scope.delimiter);
 
-    if($scope.heading.length > 1) {
-      indexLat = $scope.heading.indexOf($scope.dataLat);
-      indexLng = $scope.heading.indexOf($scope.dataLng);
+    for(var i = 0, l = $scope.headingKeys.length; i < l; i++) {
+      $scope.heading[$scope.headingKeys[i]] = $scope.firstRow[i];
+    }
+
+    if($scope.firstRow.length > 1) {
+      indexLat = $scope.firstRow.indexOf($scope.dataLat);
+      indexLng = $scope.firstRow.indexOf($scope.dataLng);
     }
     
     // begin from index 1 to avoid header
@@ -97,6 +96,12 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', function(
       toggleVisibility('#formSearch', 'show');
 
       if (!isNaN($scope.startups[0].lat) && !isNaN($scope.startups[0].lng)) {
+        
+        $scope.sortBy = function(sortType) {
+          $scope.sortReverse = ($scope.sortType === sortType) ? !$scope.sortReverse : false;
+          $scope.sortType = sortType;
+        };
+
         $scope.showMap = true;
         $scope.markers = dataToMarkers($scope.startups);
 

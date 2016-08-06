@@ -29,7 +29,7 @@
 <table id="tableMarkers" border="1" hidden>
   <thead>
     <tr>
-      <th ng-repeat="head in heading" ng-click="sortBy(head)" style="cursor:pointer;text-decoration:underline;">{{ head }}</th>
+      <th ng-repeat="(key, value) in heading" ng-click="sortBy(key)" style="cursor:pointer;text-decoration:underline;">{{ value }}</th>
     </tr>
   </thead>
   <tbody>
