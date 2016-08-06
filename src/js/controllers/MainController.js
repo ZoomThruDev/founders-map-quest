@@ -1,14 +1,9 @@
-app.controller('MainController', ['$scope', '$timeout', 'leafletData', 'leafletBoundsHelpers', function($scope, $timeout, leafletData, leafletBoundsHelpers){
-
-  $scope.bounds = leafletBoundsHelpers.createBoundsFromArray([
-    [ 51.508742458803326, -0.087890625 ],
-    [ 50.508742458803326, -0.097890625 ]
-  ]);
+app.controller('MainController', ['$scope', '$timeout', 'leafletData', function($scope, $timeout, leafletData){
 
   angular.extend($scope, {
     mapCenter: {
-      lat: 51.505,
-      lng: -0.09,
+      lat: 37.3403188,
+      lng: -122.0581469,
       zoom: 4
     },
     defaults: {
@@ -21,6 +16,8 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', 'leafletB
       },
       scrollWheelZoom: false
     },
+    markers: {},
+    bounds: {},
     showMap: false,
     csvData: "",
     delimiter: ",",
@@ -45,7 +42,7 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', 'leafletB
 
   $scope.$watchGroup(["delimiter", "csvData", "dataLat", "dataLng"], function() {
   
-    var lines, data, length, place, indexLat, indexLng;
+    var lines, data, length, indexLat, indexLng;
     $scope.startups = [];
     $scope.places = [];
     lines = $scope.csvData.split('\n');
@@ -70,15 +67,16 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', 'leafletB
     
     // begin from index 1 to avoid header
     for (var i = 1, l = lines.length; i < l; i++) {
-      places = [];
       line = lines[i];
       data = line.split($scope.delimiter);
 
-      var name = data[0];
+      var id = data[0];
+      var name = data[1];
       var lat = data[indexLat];
       var lng = data[indexLng];
 
       $scope.startups.push({
+        id: id,
         name: name,
         lat: parseFloat(lat),
         lng: parseFloat(lng)
@@ -90,13 +88,17 @@ app.controller('MainController', ['$scope', '$timeout', 'leafletData', 'leafletB
 
       if (!isNaN($scope.startups[0].lat) && !isNaN($scope.startups[0].lng)) {
         $scope.showMap = true;
-        $scope.mapMarkers = dataToMarkers($scope.startups);
-        $scope.bounds = leafletBoundsHelpers.createBoundsFromArray(dataToBounds($scope.startups, 2));
 
         $scope.toggleMarker = function(index, action) {
-          $scope.mapMarkers = updateMarkers($scope.startups, $scope.startupsHidden, index, action);
+          $scope.markers = updateMarkers($scope.startups, $scope.startupsHidden, index, action);
         }
-        console.log(dataToBounds($scope.startups, 2));
+
+        $scope.markers = dataToMarkers($scope.startups);
+
+        $scope.$watch(["markers"], function() {
+          updateMap(leafletData);
+        });
+
       };
     }
     

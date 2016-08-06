@@ -38,12 +38,13 @@
       <td>
         <span ng-click="toggleMarker(startup, 'hide')">HIDE</span>
       </td>
+      <td>{{startup.id}}</td>
       <td>{{startup.name}}</td>
       <td ng-model="mapCenter.lat">{{startup.lat}}</td>
       <td ng-model="mapCenter.lng">{{startup.lng}}</td>
     </tr>
     <tr>
-      <td colspan="5">
+      <td colspan="6">
         Disabled
       </td>
     </tr>
@@ -51,6 +52,7 @@
       <td>
         <span ng-click="toggleMarker(hidden, 'show')">SHOW</span>
       </td>
+      <td>{{hidden.id}}</td>
       <td>{{hidden.name}}</td>
       <td ng-model="mapCenter.lat">{{hidden.lat}}</td>
       <td ng-model="mapCenter.lng">{{hidden.lng}}</td>
@@ -59,5 +61,5 @@
 </table>
 
 <div id="map">
-  <leaflet center="mapCenter" ng-show="showMap" defaults="defaults" markers="mapMarkers" bounds="bounds" width="100%" height="480px"></leaflet>
+  <leaflet center="mapCenter" ng-show="showMap" defaults="defaults" markers="markers" bounds="bounds" width="100%" height="480px"></leaflet>
 </div>

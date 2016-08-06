@@ -10,3 +10,7 @@ app.config(function($routeProvider){
 		redirectTo: '/'
 	});
 });
+
+app.config(function($logProvider){
+	$logProvider.debugEnabled(false);
+});
