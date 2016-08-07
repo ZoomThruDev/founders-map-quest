@@ -13,5 +13,11 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "angular": "^1.5.8",
+    "angular-leaflet-directive": "^0.10.0",
+    "angular-route": "^1.5.8",
+    "leaflet": "^0.7.7"
+  }
 }
