@@ -35,7 +35,11 @@ var src = {
 	html: 'index.html',
 	views: 'views/**/*.html',
 	images: 'src/img/**/*',
-	build: 'dist'
+	build: 'dist',
+	icons: [
+		'apple-touch-icon-precomposed.png',
+		'touch-icon-192x192.png'
+	]
 };
 
 // Deletes previous compilations
@@ -48,6 +52,12 @@ gulp.task('clean', function () {
 gulp.task('images:build', function() {
 	return gulp.src(src.images)
 	.pipe(gulp.dest(src.build + '/img'));
+});
+
+// Copies icons to build folder
+gulp.task('icons:build', function() {
+	 return gulp.src(src.icons)
+	 .pipe(gulp.dest(src.build));
 });
 
 // Copies fonts to build folder
@@ -133,7 +143,7 @@ gulp.task('watch', ['build'], () => {
 // Build gulp task - gulp build
 gulp.task('build', ['clean'], cb => {
   runSequence(
-    ['images:build', 'vendor:build', 'js:build'], 'fonts:build', 'sass:build', 'html:build', 'views:build', cb
+    ['images:build', 'icons:build', 'vendor:build', 'js:build'], 'fonts:build', 'sass:build', 'html:build', 'views:build',cb
   );
 });
 
