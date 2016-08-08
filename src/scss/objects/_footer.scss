@@ -1,3 +1,25 @@
 footer {
+	background-color: $heading-color;
+	color: #fff;
 	width: 100%;
+	padding-top: 70px;
+	padding-bottom: 70px;
+
+	.footer-menu {
+		a {
+			color: #fff;
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+	p, ul {
+		line-height: 32px;
+	}
+	li {
+		display: inline;
+		padding-left: 25px;
+	}
 }

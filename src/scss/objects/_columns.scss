@@ -1,8 +1,14 @@
 .col {
+	position: relative;
+	
 	@include custom-breakpoint-min($breakpoint-medium) {
 		float: left;
 	}
-	position: relative;
+}
+.col-5 {
+	@include custom-breakpoint-min($breakpoint-medium) {
+		width: 50%;
+	}
 }
 .col-8 {
 	@include custom-breakpoint-min($breakpoint-medium) {
