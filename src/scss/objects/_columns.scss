@@ -1,0 +1,16 @@
+.col {
+	@include custom-breakpoint-min($breakpoint-medium) {
+		float: left;
+	}
+	position: relative;
+}
+.col-8 {
+	@include custom-breakpoint-min($breakpoint-medium) {
+		width: 66%;
+	}
+}
+.col-4 {
+	@include custom-breakpoint-min($breakpoint-medium) {
+		width: 33%;
+	}
+}

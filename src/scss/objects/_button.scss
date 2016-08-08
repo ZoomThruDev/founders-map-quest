@@ -1,0 +1,31 @@
+.button {
+	font-family: $nav-font;
+	font-size: 18px;
+	font-weight: 700;
+	text-transform: uppercase;
+	max-width: 200px;
+	display: block;
+	padding: 10px;
+	text-align: center;
+	@include transition(background, 0.3s, ease);
+
+	&.button-primary {
+		border: 3px solid $turquoise-light;
+		background: #fff;
+		color: $link-color;
+
+		&:hover {
+			color: #fff;
+			background-color: $turquoise-light;
+		}
+	}
+	&.button-secondary {
+		border: 3px solid #fff;
+		color: #fff;
+
+		&:hover {
+			color: $heading-color;
+			background-color: #fff;
+		}
+	}
+}

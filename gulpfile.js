@@ -20,7 +20,9 @@ var src = {
 		'src/vendor/angular/angular.js',
 		'src/vendor/angular-route/angular-route.js',
 		'src/vendor/leaflet/dist/leaflet.js',
-		'src/vendor/angular-leaflet-directive/dist/angular-leaflet-directive.js'
+		'src/vendor/angular-leaflet-directive/dist/angular-leaflet-directive.js',
+		'src/vendor/picturefill/dist/picturefill.js',
+		'src/vendor/modernizr-lite/modernizr.js'
 	],
 	js: [
 		'src/js/app.js',
@@ -161,7 +163,7 @@ gulp.task('default', ['build'], () => {
   gulp.watch([src.scss], ['sass:build', reload]);
   gulp.watch([src.images], ['images:build', reload]);
   gulp.watch([src.html], ['html:build', reload]);
-  gulp.watch([src.html], ['views:build', reload]);
+  gulp.watch([src.views], ['views:build', reload]);
 });
 
 gulp.task('deploy:build', ['build'], () => {

@@ -1,0 +1,30 @@
+// Fonts
+$main-font: 'opensans', Helvetica, Arial, sans-serif !default;
+$heading-font: 'arvo', Helvetica, Arial, sans-serif !default;
+$nav-font: 'montserrat', Helvetica, Arial, sans-serif !default;
+$body-font-weight: 500;
+$heading-font-weight: 500;
+
+// Colors
+$heading-color: #0CA0BD;
+$text-primary-color: #4A4A4A;
+$light-grey: #8D8D8D;
+$line-color: #DBDBDB;
+$turquoise-light: #82C7D4;
+$link-color: $turquoise-light !default;
+
+// Fonts - sizes
+$html-font-size: 62.5% !default; //62.5% of 16px = 10px
+$body-font-size: 1.4rem;
+$h1-font-size: 3.5rem !default;
+$h1-line-height: $h1-font-size + 0.6;
+$body-line-height: $body-font-size;
+
+// Layout
+$max-inner-width: 980px;
+
+// Breakpoints
+$breakpoint-large: 1024px;
+$breakpoint-medium: 768px;
+$breakpoint-small: 640px;
+$breakpoint-mini: 400px;
