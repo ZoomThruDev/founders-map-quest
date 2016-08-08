@@ -1,0 +1,24 @@
+/* place *.eot font at the end to avoid IE 10 console error message*/
+
+$urlFonts: "../fonts/";
+
+/* Iteraciones para generar @font-face para cada fuente definido en el grupo */
+@each $f_family, $f_filename, $f_weight in
+  ('arvo', 'arvo-regular', 500),
+  ('arvo', 'arvo-bold', 700),
+  ('montserrat', 'montserrat-regular', 500),
+  ('montserrat', 'montserrat-bold', 700),
+  ('opensans', 'opensans-regular', 500),
+  ('opensans', 'opensans-bold', 700),
+{
+  @font-face {
+    font-family: $f_family;
+    src: url('#{$urlFonts}#{$f_filename}-webfont.woff2') format('woff2'),
+         url('#{$urlFonts}#{$f_filename}-webfont.woff') format('woff'),
+         url('#{$urlFonts}#{$f_filename}-webfont.ttf') format('truetype'),
+         url('#{$urlFonts}#{$f_filename}-webfont.svg##{$f_family}') format('svg'),
+         url('#{$urlFonts}#{$f_filename}-webfont.eot');
+    font-weight: $f_weight;
+    font-style: normal;
+  }
+}
