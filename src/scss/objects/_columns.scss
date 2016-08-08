@@ -1,6 +1,6 @@
 .col {
 	position: relative;
-	
+
 	@include custom-breakpoint-min($breakpoint-medium) {
 		float: left;
 	}

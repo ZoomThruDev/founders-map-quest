@@ -1,4 +1,13 @@
 .inner {
 	max-width: $max-inner-width;
 	margin: 0 auto;
+
+	@include custom-breakpoint-max($breakpoint-medium) {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	@include custom-breakpoint-min-max($breakpoint-medium, $max-inner-width) {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 }

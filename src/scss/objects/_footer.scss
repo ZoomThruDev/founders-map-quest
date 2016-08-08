@@ -1,9 +1,37 @@
+$margin-footer: 70px;
+
 footer {
 	background-color: $heading-color;
 	color: #fff;
 	width: 100%;
-	padding-top: 70px;
-	padding-bottom: 70px;
+	padding-top: $margin-footer / 2;
+	padding-bottom: $margin-footer / 2;
+
+	@include custom-breakpoint-min($breakpoint-medium) {
+		padding-top: $margin-footer;
+		padding-bottom: $margin-footer;
+	}
+
+	@include custom-breakpoint-max($breakpoint-medium) {
+		text-align: center;
+	}
+
+	.footer-menu, .copyright {
+		@include custom-breakpoint-max($breakpoint-medium) {
+			padding-bottom: 30px;
+
+			&:after {
+				content: " ";
+				width: 90px;
+				height: 1px;
+				top: 15px;
+				position: relative;
+				display: block;
+				margin: 0 auto;
+				background-color: rgba(255, 255, 255, .5);
+			}
+		}
+	}
 
 	.footer-menu {
 		a {
@@ -14,12 +42,45 @@ footer {
 				text-decoration: none;
 			}
 		}
+		
 	}
 	p, ul {
 		line-height: 32px;
 	}
-	li {
-		display: inline;
-		padding-left: 25px;
+	ul {
+		@include custom-breakpoint-max($breakpoint-medium) {
+			text-align: center;
+		}
+		li {
+			@include custom-breakpoint-min($breakpoint-medium) {
+				padding-left: 25px;
+				
+				&:first-child {
+					padding-left: 0px;
+				}
+			}
+
+			@include custom-breakpoint-min($breakpoint-medium) {
+				display: inline;
+			}
+		}
+	}
+	ul.social-icons {
+
+		@include custom-breakpoint-max($breakpoint-medium) {
+			margin-top: 10px;
+		}
+		li {
+			display: inline;
+
+			@include custom-breakpoint-max($breakpoint-medium) {
+				padding-left: 15px;
+				padding-right: 15px;
+
+				img {
+					height: 25px;
+				}
+			}
+		}
 	}
 }

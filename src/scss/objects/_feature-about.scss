@@ -1,16 +1,26 @@
 .feature-about {
 	position: relative;
 	color: #fff;
-	padding-top: 115px;
-	padding-bottom: 115px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-image: url('/img/720x/img_feature_about.jpg'); 
-	max-height: 560px;
+	
+
+	@include custom-breakpoint-max($breakpoint-medium) {
+		text-align: center;
+	}
 
 	@include custom-breakpoint-min($breakpoint-medium) {
-		background-image: url('/img/1440x/img_feature_about.jpg'); 
+		background-image: url('/img/1440x/img_feature_about.jpg');
+		max-height: 560px;
+	}
+
+	@include custom-breakpoint-min($breakpoint-large) {
+		padding-top: 115px;
+		padding-bottom: 115px;
 	}
 
 	&:before {
@@ -28,21 +38,40 @@
 		z-index: 2;
 	}
 	h1 {
-		font-size: 50px;
-		line-height: 62px;
+		font-size: 35px;
+		line-height: 42px;
 		margin-bottom: 15px;
 		padding-bottom: 0px;
+
+		@include custom-breakpoint-min($breakpoint-medium) {
+			font-size: 50px;
+			line-height: 62px;
+		}
 
 		&:after {
 			display: none;
 		}
 	}
 	p {
-		font-size: 20px;
-		line-height: 28px;
+		font-size: 16px;
+		line-height: 24px;
 		margin-bottom: 30px;
+
+		@include custom-breakpoint-min($breakpoint-medium) {
+			font-size: 20px;
+			line-height: 28px;
+		}
+	}
+	.button {
+		margin: 0 auto;
+
+		@include custom-breakpoint-min($breakpoint-medium) {
+			margin: 0;
+		}
 	}
 	.col-4 {
-		height: 200px;
+		@include custom-breakpoint-min($breakpoint-medium) {
+			height: 200px;
+		}
 	}
 }
