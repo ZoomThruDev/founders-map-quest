@@ -1,0 +1,53 @@
+.testimonials {
+	padding-top: 30px;
+	padding-bottom: 30px;
+
+	@include custom-breakpoint-min($breakpoint-large) {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+
+	h1 {
+		color: $heading-color-dark;
+		margin-bottom: 30px;
+
+		@include custom-breakpoint-min($breakpoint-medium) {
+			margin-bottom: 60px;
+		}
+	}
+	.testimonial {
+		@include custom-breakpoint-max($breakpoint-medium) {
+			margin-bottom: 30px;
+		}
+	}
+	.testimonial-title {
+		font-family: 'arvo';
+		font-weight: 500;
+		font-size: 28px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		color: $heading-color-dark;
+
+		@include custom-breakpoint-min($breakpoint-medium) {
+			margin-top: 25px;
+		}
+	}
+	.testimonial-startup {
+		font-family: 'montserrat';
+		font-weight: 700;
+		font-size: 12px;
+		text-transform: uppercase;
+		color: $light-grey;
+		letter-spacing: 2px;
+		margin-bottom: 5px;
+
+		@include custom-breakpoint-min($breakpoint-medium) {
+			margin-bottom: 25px;
+		}
+	}
+	.testimonial-description {
+		color: $light-grey;
+		max-width: 210px;
+		margin: 0 auto;
+	}
+}

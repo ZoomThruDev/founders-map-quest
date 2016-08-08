@@ -21,7 +21,7 @@ h1 {
 	&:after {
 		content: " ";
 		display: block;
-		width: 230px;
+		width: 75px;
 		height: 1px;
 		position: relative;
 		top: $h1-margin-bottom / 2;
@@ -30,6 +30,7 @@ h1 {
 
 		@include custom-breakpoint-min($breakpoint-medium) {
 			top: $h1-margin-bottom;
+			width: 230px;
 		}
 	}
 }
