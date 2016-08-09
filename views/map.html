@@ -32,16 +32,53 @@
       <div class="inner">
         <h1>Startup's Map</h1>
         <p>Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, vitae ullamcorper metus. Sed sollicitudin ipsum quis nunc sollicitudin ultrices. Donec euismod scelerisque ligula. Maecenas eu varius risus, eu aliquet arcu. Curabitur fermentum suscipit est, tincidunt mattis lorem luctus id. Donec eget massa a diam condimentum pretium. Aliquam erat volutpat.</p>
+
+        <div class="form-fields clear">
+          <div class="col col-4">
+            <fieldset>
+              <textarea name="csvData" ng-model="csvData" placeholder="Place your code" cols="30" rows="10"></textarea>
+            </fieldset>
+          </div>
+          <div class="col col-4">
+            <fieldset id="delimiter" hidden>
+              <p>
+                <input id="delimiterComma" type="radio" name="delimiter" ng-model="delimiter" value=",">
+                <label for="delimiterComma">Delimiter ","</label>
+              </p>
+              <p>
+                <input id="delimiterSemicolon" type="radio" name="delimiter" ng-model="delimiter" value=";">
+                <label for="delimiterSemicolon">Delimiter ";"</label>
+              </p>
+              <p>
+                <input id="delimiterSemicolon" type="radio" name="delimiter" ng-model="delimiter" value="t">
+                <label for="delimiterSemicolon">Delimiter "TAB"</label>
+              </p>
+            </fieldset>
+          </div>
+          <div class="col col-4">
+            <fieldset id="coords" hidden>
+              <select name="head" ng-model="dataLat" ng-selected="dataLat" ng-options="head for head in heading">
+                <option value="">Choose column for Latitude</option>
+              </select>
+              <select name="head" ng-model="dataLng" ng-selected="dataLng" ng-options="head for head in heading">
+                <option value="">Choose column for Longitude</option>
+              </select>
+            </fieldset>
+          </div>
+        </div>
         
       </div>
 
       <div class="table-container">
-        <form id="formSearch" hidden>
-          <fieldset>
-            <input type="text" placeholder="Search startup" ng-model="searchStartup">
-          </fieldset>
-        </form>
+       
         <table id="tableMarkers" hidden>
+          <caption>
+            <form id="formSearch" hidden>
+              <fieldset>
+                <input type="text" placeholder="Search startup" ng-model="searchStartup">
+              </fieldset>
+            </form>
+          </caption>
           <thead>
             <tr>
               <th ng-repeat="(key, value) in heading" ng-click="sortBy(key)" style="cursor:pointer;text-decoration:underline;">{{ value }}</th>
@@ -59,7 +96,7 @@
               <td>
                 <img ng-src="{{startup.photo}}" width="30px" height="30px">
               </td>
-              <td><a href="{{startup.homepage}}">URL</a></td>
+              <td class="align-center"><a href="{{startup.homepage}}">URL</a></td>
               <td>{{startup.lat}}</td>
               <td>{{startup.lng}}</td>
             </tr>
@@ -74,33 +111,6 @@
       </div>
       
     </div>
-
-
-    <fieldset id="delimiter" hidden>
-      <p>
-        <input id="delimiterComma" type="radio" name="delimiter" ng-model="delimiter" value=",">
-        <label for="delimiterComma">Delimiter ","</label>
-      </p>
-      <p>
-        <input id="delimiterSemicolon" type="radio" name="delimiter" ng-model="delimiter" value=";">
-        <label for="delimiterSemicolon">Delimiter ";"</label>
-      </p>
-      <p>
-        <input id="delimiterSemicolon" type="radio" name="delimiter" ng-model="delimiter" value="t">
-        <label for="delimiterSemicolon">Delimiter "TAB"</label>
-      </p>
-    </fieldset>
-    <fieldset id="coords" hidden>
-      <select name="head" ng-model="dataLat" ng-selected="dataLat" ng-options="head for head in heading">
-        <option value="">Choose column for Latitude</option>
-      </select>
-      <select name="head" ng-model="dataLng" ng-selected="dataLng" ng-options="head for head in heading">
-        <option value="">Choose column for Longitude</option>
-      </select>
-    </fieldset>
-    <p>
-      <textarea name="csvData" ng-model="csvData" placeholder="Place your code" cols="40" rows="10"></textarea>
-    </p>
 
  
 

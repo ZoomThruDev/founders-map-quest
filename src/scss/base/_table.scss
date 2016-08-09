@@ -3,6 +3,8 @@ table {
 	color: $text-primary-color;
 	border-collapse: collapse;
 	line-height: 14px;
+	margin: 0 auto;
+	width: 100%;
 
 	th {
 		font-weight: 700;
@@ -12,6 +14,10 @@ table {
 	td {
 		padding: 3px 5px;
 		border-bottom: 1px solid #cccccc;
+	}
+	a {
+		color: $text-primary-color;
+		text-decoration: underline;
 	}
 }
 #tableMarkers {
