@@ -1,0 +1,52 @@
+.partners {
+	padding-bottom: 30px;
+
+	@include custom-breakpoint-min($breakpoint-large) {
+		padding-bottom: 75px;
+	}
+
+	h2 {
+		letter-spacing: 1.8px;
+		text-transform: uppercase;
+		margin-bottom: 20px;
+		position: relative;
+
+		span {
+			@include custom-breakpoint-min($breakpoint-large) {
+				background-color: #fff;
+				position: relative;
+				z-index: 2;
+				padding-left: 8px;
+				padding-right: 8px;
+			}
+		}
+
+		@include custom-breakpoint-min($breakpoint-large) {
+			&:before {
+				content: " ";
+				height: 1px;
+				background-color: $line-color;
+				width: 100%;
+				position: absolute;
+				display: block;
+				top: 10px;
+			}
+		}
+
+		@include custom-breakpoint-min($breakpoint-large) {
+			margin-bottom: 40px;
+		}
+	}
+	.partner-logos {
+		display: -webkit-flex;
+		display: flex;
+		-webkit-justify-content: space-around;
+		justify-content: space-around;
+		-webkit-flex-wrap: wrap;
+		flex-wrap: wrap;
+
+		span {
+			padding: 10px;
+		}
+	}
+}

@@ -22,7 +22,8 @@ var src = {
 		'src/vendor/leaflet/dist/leaflet.js',
 		'src/vendor/angular-leaflet-directive/dist/angular-leaflet-directive.js',
 		'src/vendor/picturefill/dist/picturefill.js',
-		'src/vendor/modernizr-lite/modernizr.js'
+		'src/vendor/modernizr-lite/modernizr.js',
+		'src/vendor/smooth-scroll/dist/js/smooth-scroll.js'
 	],
 	js: [
 		'src/js/app.js',
