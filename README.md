@@ -1,5 +1,8 @@
 # Challege App 'Founder's Map'
 
+**Demo is seen here:**
+http://foundersmapquest.surge.sh
+
 A project uses bower and nodejs modules like gulp.
 
 For a purpose of this project and to avoid inconsistencies between developers I have added following directories in repository: /src/vendor, /dist
@@ -29,6 +32,3 @@ If you have not nodejs installed, follow [https://nodejs.org/en/].
 `$ gulp build` - runs project and assets compilation on demand
 
 `$ gulp deploy:build` - runs a deploy to http://foundersmapquest.surge.sh, it is necessary to have an account [https://surge.sh]
-
-**Demo is seen here:**
-http://foundersmapquest.surge.sh
