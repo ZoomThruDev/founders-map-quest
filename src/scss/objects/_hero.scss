@@ -1,0 +1,76 @@
+#hero {
+	position: relative;
+  background-image: url("/img/2880x/hero.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 610px;
+
+  @include custom-breakpoint-max($breakpoint-large) {
+  	background-image: url("/img/1440x/hero.jpg");
+    height: 520px;
+  }
+
+  @include custom-breakpoint-max($breakpoint-small) {
+  	background-image: url("/img/720x/hero.jpg");
+    height: 480px;
+  }
+
+  .hero-content {
+  	position: absolute;
+  	width: 100%;
+  	top: 45%;
+  	left: 50%;
+  	@include transform(translate, (-50%, -45%));
+  	color: #fff;
+  	text-align: center;
+
+  	h1, h2 {
+  		padding-left: 20px;
+  		padding-right: 20px;
+
+  		@include custom-breakpoint-min($breakpoint-medium) {
+				padding-left: 0px;
+				padding-right: 0px;
+			}
+  	}
+  	h1 {
+  		font-size: 4.0rem;
+  		margin-bottom: 40px;
+			padding-bottom: 0px;
+			text-shadow: 1px 1px 0px #3993A5;
+			line-height: 42px;
+
+			@include custom-breakpoint-min($breakpoint-medium) {
+				font-size: 7.5rem;
+				margin-bottom: $h1-margin-bottom - 3;
+				padding-bottom: $h1-margin-bottom - 3;
+			}
+
+  		&:after {
+				width: 85px;
+				height: 3px;
+				top: 20px;
+				margin: 0 auto;
+				background-color: #fff;
+
+				@include custom-breakpoint-min($breakpoint-medium) {
+					top: $h1-margin-bottom + 5;
+					width: 110px;
+				}
+			}
+  	}
+  	h2 {
+  		font-family: 'montserrat';
+  		font-weight: 500;
+  		color: #fff;
+  		font-size: 2.0rem;
+  		text-shadow: 1px 1px 0px #3993A5;
+
+  		@include custom-breakpoint-min($breakpoint-medium) {
+				max-width: 360px;
+				margin: 0 auto;
+			}
+  	}
+  }
+}

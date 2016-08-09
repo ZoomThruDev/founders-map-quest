@@ -14,7 +14,7 @@ h1 {
 	}
 
 	@include custom-breakpoint-max($breakpoint-medium) {
-		font-size: 22px;
+		font-size: 2.2rem;
 		line-height: 26px;
 	}
 

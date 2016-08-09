@@ -38,13 +38,13 @@
 		z-index: 2;
 	}
 	h1 {
-		font-size: 35px;
+		font-size: 3.5rem;
 		line-height: 42px;
 		margin-bottom: 15px;
 		padding-bottom: 0px;
 
 		@include custom-breakpoint-min($breakpoint-medium) {
-			font-size: 50px;
+			font-size: 5.0rem;
 			line-height: 62px;
 		}
 
@@ -53,12 +53,12 @@
 		}
 	}
 	p {
-		font-size: 16px;
+		font-size: 1.6rem;
 		line-height: 24px;
 		margin-bottom: 30px;
 
 		@include custom-breakpoint-min($breakpoint-medium) {
-			font-size: 20px;
+			font-size: 2.0rem;
 			line-height: 28px;
 		}
 	}

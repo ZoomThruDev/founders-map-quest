@@ -1,0 +1,31 @@
+.menu {
+	position: absolute;
+	top: 45px;
+	z-index: 2;
+	width: 100%;
+	font-family: 'montserrat';
+	text-align: center;
+	font-weight: 700;
+	font-size: 1.5rem;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	text-shadow: 1px 1px 0px #3993A5;
+
+	a {
+		color: #fff;
+		display: inline-block;
+		padding: 8px 12px;
+		@include transition(background, 0.3s, ease);
+
+		&:hover {
+			background: #fff;
+			color: $heading-color;
+			text-shadow: none;
+		}
+	}
+	li {
+		display: inline;
+		margin: 0px 20px;
+	}
+}
