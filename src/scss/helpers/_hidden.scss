@@ -1,0 +1,14 @@
+.nomobile {
+	display: none;
+
+	@include custom-breakpoint-min($breakpoint-small) {
+		display: block;
+	}
+}
+.mobile {
+	display: block;
+
+	@include custom-breakpoint-min($breakpoint-small) {
+		display: none;
+	}
+}

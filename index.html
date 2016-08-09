@@ -14,12 +14,20 @@ and network with other entrepreneurs"/>
 <body ng-app="FoundersMapQuest">
 	<div class="main-container">
 		<header>
-			<nav class="menu">
+			<nav class="menu nomobile">
 				<ul>
 					<li><a href="/#/">Home</a></li>
 					<li><a href="/#/map">See map</a></li>
 					<li><a href="/#/">About project</a></li>
 				</ul>
+			</nav>
+			<nav class="menu menu-mobile-trigger mobile">
+				<picture>
+					<!--[if IE 9]><video style="display: none;"><![endif]-->
+					<source srcset="/img/offcanvas_menu.svg" type="image/svg+xml">
+					<!--[if IE 9]></video><![endif]-->
+					<img srcset="/img/offcanvas_menu.png" alt="">
+				</picture>
 			</nav>
 		</header>
 
