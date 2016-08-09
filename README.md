@@ -29,3 +29,6 @@ If you have not nodejs installed, follow [https://nodejs.org/en/].
 `$ gulp build` - runs project and assets compilation on demand
 
 `$ gulp deploy:build` - runs a deploy to http://foundersmapquest.surge.sh, it is necessary to have an account [https://surge.sh]
+
+**Demo is seen here:**
+http://foundersmapquest.surge.sh
