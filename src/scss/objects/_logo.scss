@@ -1,7 +1,14 @@
 .logo {
-	margin-bottom: 10px;
+	#hero & {
+		margin-bottom: 10px;
 
-	@include custom-breakpoint-min($breakpoint-medium) {
-		margin-bottom: 30px;
+		@include custom-breakpoint-min($breakpoint-medium) {
+			margin-bottom: 30px;
+		}
+	}
+	header.page-sub & {
+		position: absolute;
+		top: 20px;
+		z-index: 2;
 	}
 }

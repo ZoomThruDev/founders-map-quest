@@ -1,0 +1,24 @@
+table {
+	font-size: 1.2rem;
+	color: $text-primary-color;
+	border-collapse: collapse;
+	line-height: 14px;
+
+	th {
+		font-weight: 700;
+		border-bottom: 2px solid #cccccc;
+		padding: 8px 5px;
+	}
+	td {
+		padding: 3px 5px;
+		border-bottom: 1px solid #cccccc;
+	}
+}
+#tableMarkers {
+	border: 2px;
+}
+.table-container {
+	margin: 20px;
+	position: relative;
+	overflow-x: auto;
+}
